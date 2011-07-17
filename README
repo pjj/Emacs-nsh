@@ -1,0 +1,28 @@
+Learn to use shells in emacs buffers and there is no going back to terminals!
+
+Emacs-nsh adds amazing features to shells within buffers.  Name your shells
+and it will automatically keep separate histories for each of your named shells.
+Get Dropbox, and it will allow you to access all your named-shell histories
+from all of your machines.  I've used this tool for years and it saved me tons
+of time (it only gets better over time).  With a simple grep in
+~/Dropbox/nsh_history/* I can find the arguments for commands that I
+issued years ago.
+
+
+Installation instructions:
+
+Download Emacs-nsh to your ~/Dropbox/elisp/ directory.
+
+Add the following line to your emacs profile (or .emacs file):
+
+(load "~/Dropbox/elisp/Emacs-nsh/nsh.el")
+
+Usage:
+
+Start a new named shell with: M-x nsh (Esc-x nsh).  Enter the shell's 
+name in the minibuffer.  You can auto-complete the name using the 
+tab key (nsh will look up the names of all your existing histories).
+
+
+
+
