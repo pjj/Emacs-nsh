@@ -1,10 +1,10 @@
 Learn to use shells in emacs buffers and there is no going back to terminals!
 
-Emacs-nsh adds amazing features to shells within buffers.  Name your shells
+Emacs-nsh adds amazing features to shells within buffers.  Name your shells,
 and it will automatically keep separate histories for each of your named shells.
 Get Dropbox, and it will allow you to access all your named-shell histories
-from all of your machines.  I've used this tool for years and it saved me tons
-of time (it only gets better over time).  With a simple grep in
+from all of your machines.  I've used this tool for years, and it has saved me 
+tons of time (it only gets better over time).  With a simple grep in
 ~/Dropbox/nsh_history/* I can find the arguments for commands that I
 issued years ago.
 
