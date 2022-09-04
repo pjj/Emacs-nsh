@@ -28,6 +28,11 @@ in your own init.el, add the nsh-download directory to load-path:
   :bind (("<f9>" . nsh)))
 
 
+3. Optionally, costomize the nsh variables, especially: Nsh Bash History Dir,
+if you want to use a non-standard location for the histories.
+The default location is ~/.nsh_history/
+
+
 Usage:
 
 Start a new named shell with: M-x nsh (Esc-x nsh; or bind to <f9>).  

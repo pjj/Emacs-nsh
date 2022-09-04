@@ -20,9 +20,9 @@
     (nsh-bash-executable custom-variable) ;; location of bash executable
     (nsh-bash-history-dir custom-variable) ;; directory that contains all past shell histories
     )
-  "Customization group for split-frame.el."
+  "Customization group for nsh.el."
   :group 'convenience
-  :prefix "split-frame")
+  :prefix "nsh")
 
 (defcustom nsh-bash-executable
   "/bin/bash"
