@@ -1,11 +1,13 @@
 Learn to M-x shell in emacs buffers and there is no going back to terminals!
 
-Emacs-nsh adds amazing features to shells within buffers.  Name your shells,
-and it will automatically keep separate histories for each of your named shells.
-Get Dropbox, and it will allow you to access all your named-shell histories
-from all of your synced machines (or use git to automagically store and sync them).  
-I've used nsh for years, and it has saved me tons of time (it only gets better over time).  
-With a simple rg in your nsh_history directory you can find commands you issued years ago.
+Emacs-nsh adds amazing features to shells within buffers.  Name your
+shells, and it will automatically keep separate histories for each of
+your named shells.  Get Dropbox, and it will allow you to access all
+your named-shell histories from all of your synced machines (or use
+git to automagically store and sync them).  I've used nsh for years,
+and it has saved me tons of time (it only gets better over time).
+With a simple rg in your nsh_history directory you can find commands
+you issued years ago.
 
 Installation instructions:
 
@@ -15,7 +17,8 @@ Installation instructions:
 
 (load "/full_path_to_my_elisp/nsh.el")
 
-2b. Alternatively, if you prefer use-package, add the above directory to load-path:
+2b. Alternatively, you can try use-package.  After configurint use-package,
+in your own init.el, add the nsh-download directory to load-path:
 
 (defvar user-elisp-directory (expand-file-name "~/.emacs.d/lisp"))
 (add-to-list 'load-path (concat user-elisp-directory "/var"))
