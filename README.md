@@ -33,10 +33,10 @@ section in my own init.el
 ;; that uses the comint functionality of Emacs, and that keeps a
 ;; named history of every single command.  It also enables autocompletion
 ;; of past named shells, and continues their history from where it left off.
+;; It works with bookmarks and burly for saving window configurations.
+;; It works with project.el for dropping an automatically-named shell in a project.
 ;; Together with a quick rg on the directory with all the shell histories,
 ;; this package has enabled a memory of past shell commands for about 15 years
-;; I only kept the dates at a later time, so the early entries, although valid,
-;; probably aren't as easy to sort through chronologically.
 ;;
 (use-package nsh
   :quelpa ((nsh :fetcher github :repo "pjj/Emacs-nsh") :upgrade t)
