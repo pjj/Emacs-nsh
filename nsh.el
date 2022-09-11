@@ -19,10 +19,22 @@
     (nsh-bash-executable custom-variable) ;; location of bash executable
     (nsh-bash-history-dir custom-variable) ;; directory that contains all past shell histories
     (nsh-common-env custom-variable)
+    (nsh-mode-unload-hook custom-variable)
+    (nsh-mode-hook custom-variable)
     )
-  "Customization group for split-frame.el."
+  "Customization group for nsh."
   :group 'convenience
   :prefix "split-frame")
+
+(defcustom nsh-mode-unload-hook nil
+  "A hook that gets run when `nsh-mode' is unloaded."
+  :type 'hook
+  :group 'nsh-customization)
+
+(defcustom nsh-mode-hook nil
+  "A hook that gets run when `nsh-mode' is entered."
+  :type 'hook
+  :group 'nsh-customization)
 
 (defcustom nsh-bash-executable
   "/bin/bash"
@@ -95,12 +107,15 @@
   (let ((nsh-buffer (get-buffer-create (format "nsh-%s" nsh-name)))
         (explicit-shell-file-name nsh-bash-executable))
     (nsh-env-setup nsh-name)
-    (shell nsh-buffer)))
+    (let ((buf (shell nsh-buffer)))
+      (unless (derived-mode-p 'nsh-mode) (nsh-mode))
+      buf)))
 
 ;; Because project.el has become rather useful over the last decade,
 ;; I provide here an implementation of nsh-in-project, which starts
 ;; an automatically named shell in the root directory of the project.
 ;; I typically customize project-switch-commands and add nsh-in-project.
+;;###autoload
 (defun nsh-in-project ()
   "Create a new shell in project with default name and separate history."
   (interactive)
@@ -108,11 +123,8 @@
   (let* ((default-directory (project-root (project-current t)))
 	 (proj-name (file-name-nondirectory
 		     (directory-file-name default-directory)))
-	 (nsh-name (format "proj-%s" proj-name))
-	 (nsh-buffer (get-buffer-create (format "nsh-%s" nsh-name)))
-	 (explicit-shell-file-name nsh-bash-executable))
-    (nsh-env-setup nsh-name)
-    (shell nsh-buffer)))
+	 (nsh-name (format "proj-%s" proj-name)))
+    (nsh nsh-name)))
 
 ;; create history directory, if it doesn't already exist.
 (condition-case err
@@ -123,6 +135,41 @@
 	(make-directory nsh-bash-history-dir))            ; it wasn't there, make it
   ('error (message "From: %s --> %s"                  ; for the unknown error...
 		   load-file-name (error-message-string err))))
+
+;; bookmark support:
+;; we defined a derived mode that populates bookmark-make-record-function
+;; Other than that, we are fine with the defaults of shell-mode.
+;;;###autoload
+(define-derived-mode nsh-mode shell-mode "Nsh"
+  "Named bash interactive mode."
+  (setq-local nsh-mode t)
+  (setq-local bookmark-make-record-function #'nsh-bookmark-make-record)
+  (setq-local list-buffers-directory (expand-file-name default-directory)))
+
+(put 'nsh-mode 'mode-class 'special)
+
+(declare-function bookmark-prop-get "bookmark" (bookmark prop))
+
+(defun nsh-bookmark-name ()
+  "Return a name for the bookmark."
+  (buffer-name))
+
+(defun nsh-bookmark-make-record ()
+  "Create a bookmark for the current Nsh buffer."
+  (let ((nsh-name (substring (buffer-name) 4 nil))) ;; drop nsh- from buffer name
+    `(,(nsh-bookmark-name)
+      (location . ,default-directory)
+      (name . ,nsh-name) ;; drop nsh- from buffer name
+      (handler . nsh-bookmark-jump))))
+
+;;;###autoload
+(defun nsh-bookmark-jump (bookmark)
+  "Default bookmark handler for BOOKMARK of nsh buffers."
+  (let ((default-directory (bookmark-prop-get bookmark 'location))
+	(nsh-name (bookmark-prop-get bookmark 'name)))
+    (nsh nsh-name)))
+
+(put 'nsh-bookmark-jump 'bookmark-handler-type "Nsh")
 
 (provide 'nsh)
 ;;; nsh.el ends here
