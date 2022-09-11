@@ -2,14 +2,15 @@
 
 Learn to M-x nsh in Emacs buffers and there is no going back to terminals!
 
-Nsh adds amazing features to shells within buffers.  Name your
-shells, and it will automatically keep separate histories for each of
-your named shells.  Get Dropbox, and it will allow you to access all
-your named-shell histories from all of your synced machines (or use
-git to automagically store and sync them).  I've used nsh for years,
-and it has saved me tons of time (it only gets better over time).
-With a simple rg in your nsh_history directory you can find commands
-you issued years ago.
+Nsh adds amazing features to shells within buffers.  Name your shells,
+and it will automatically keep separate histories for each of your
+named shells.  Get Dropbox, and it will allow you to access all your
+named-shell histories from all of your synced machines (or use git to
+automagically store and sync them). Bookmark your nsh and restore it
+at the correct directory. Drop an nsh at your project's root. I've
+used nsh for years, and it has saved me tons of time (it only gets
+better over time).  With a simple rg in your nsh_history directory you
+can find commands you issued years ago.
 
 ## Installation instructions:
 
@@ -53,7 +54,8 @@ I typically bind it to the key 'n', so my customization entry is:
 
 5. Optionally, add the useful command ngrep to your path, to search
 your histories of named shells (optionally only those with a pattern):
-```$ cat ~/bin/ngrep
+```
+bash$ cat ~/bin/ngrep
 #!/bin/bash --posix
 
 # Sort results in order of last modified (newest first)
