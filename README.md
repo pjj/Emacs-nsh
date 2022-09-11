@@ -42,13 +42,6 @@ section in my own init.el
   :bind (("<f9>" . nsh)))
 ```
 
-(defvar user-elisp-directory (expand-file-name "~/.emacs.d/lisp"))
-(add-to-list 'load-path (concat user-elisp-directory "/var"))
-
-(use-package nsh
-  :bind (("<f9>" . nsh)))
-
-
 3. Optionally, costomize the nsh variables, especially: Nsh Bash History Dir,
 if you want to use a non-standard location for the histories.
 The default location is ~/.nsh_history/
