@@ -1,4 +1,4 @@
-
+# nsh
 
 Learn to M-x shell in emacs buffers and there is no going back to terminals!
 
@@ -11,7 +11,7 @@ and it has saved me tons of time (it only gets better over time).
 With a simple rg in your nsh_history directory you can find commands
 you issued years ago.
 
-Installation instructions:
+## Installation instructions:
 
 1. Download nsh.el to your directory of elisp hacks, e.g. ~/.emacs.d/lisp/var/
 
@@ -59,7 +59,7 @@ I typically bind it to the key 'n', so my customization entry is:
 (nsh-in-project "Nsh" 110)
 
 
-Usage:
+## Usage:
 
 Start a new named shell with: M-x nsh (Esc-x nsh; or bind to <f9>).  
 Enter the shell's name in the minibuffer.  
