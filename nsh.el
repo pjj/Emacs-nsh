@@ -11,6 +11,7 @@
 
 (require 'shell)
 (require 'cl-lib)
+(require 'project)
 
 ;; Customization helps select useful buffers for default split functionality.
 (defgroup nsh-customization
