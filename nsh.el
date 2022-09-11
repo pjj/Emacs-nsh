@@ -10,6 +10,7 @@
 ;;; Code:
 
 (require 'shell)
+(require 'cl-lib)
 
 ;; Customization helps select useful buffers for default split functionality.
 (defgroup nsh-customization
@@ -70,7 +71,6 @@
 ;; We use setenv in a 'cl-loop for' to assign all pairs of environment variables.
 (defun nsh-env-setup (nsh-name)
   "Setup the common environment of nsh NSH-NAME."
-  (require 'cl-lib)
   (let ()
     (cl-loop for (key . value) in nsh-bash-common-env do
 	   (setenv key value))

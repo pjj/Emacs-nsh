@@ -24,7 +24,6 @@ in your own init.el, add the nsh-download directory to load-path:
 (add-to-list 'load-path (concat user-elisp-directory "/var"))
 
 (use-package nsh
-  :ensure t
   :bind (("<f9>" . nsh)))
 
 
