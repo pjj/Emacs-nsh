@@ -1,3 +1,5 @@
+
+
 Learn to M-x shell in emacs buffers and there is no going back to terminals!
 
 Emacs-nsh adds amazing features to shells within buffers.  Name your
@@ -15,10 +17,30 @@ Installation instructions:
 
 2. Add the following line to your emacs init (or .emacs) file:
 
+```
 (load "/full_path_to_my_elisp/nsh.el")
+```
 
-2b. Alternatively, you can try use-package.  After configurint use-package,
-in your own init.el, add the nsh-download directory to load-path:
+2b. Alternatively, you can try quelpa with use-package.  Here is the
+section in my own init.el
+
+```
+;; Emacs, please load my own powerful nsh function.
+;; This is probably the command I typed the most times in emacs,
+;; and eventually I decided to also assign a single key to it.
+;; The function is simple: open a named bash shell, like M-x shell,
+;; that uses the comint functionality of Emacs, and that keeps a
+;; named history of every single command.  It also enables autocompletion
+;; of past named shells, and continues their history from where it left off.
+;; Together with a quick rg on the directory with all the shell histories,
+;; this package has enabled a memory of past shell commands for about 15 years
+;; I only kept the dates at a later time, so the early entries, although valid,
+;; probably aren't as easy to sort through chronologically.
+;;
+(use-package nsh
+  :quelpa ((nsh :fetcher github :repo "pjj/Emacs-nsh") :upgrade t)
+  :bind (("<f9>" . nsh)))
+```
 
 (defvar user-elisp-directory (expand-file-name "~/.emacs.d/lisp"))
 (add-to-list 'load-path (concat user-elisp-directory "/var"))
