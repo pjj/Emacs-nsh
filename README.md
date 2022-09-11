@@ -1,4 +1,4 @@
-# nsh -- named bash shells
+# nsh -- named bash shells in Emacs
 
 Learn to M-x nsh in Emacs buffers and there is no going back to terminals!
 
