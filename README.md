@@ -49,9 +49,13 @@ bash$ cat ~/bin/ngrep
 rg $1 --sort modified ~/.nsh_history/*${2}*
 ```
 
-4.a If you install the package `rg`, 
+4a. If you install the package `rg`, 
 you could use the provided function `ngrep` instead.
-The output buffer of this special `*rg*` search is called `*ngrep*` 
+The `ngrep` function puts the output in a buffer called
+`*ngrep*` that has the normal functionality of a `*rg*` buffer.
+I often use this function to quickly jump to the relevant secction 
+of the history of a particular shell.
+
 
 ## Usage:
 
