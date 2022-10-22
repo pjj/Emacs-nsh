@@ -49,6 +49,10 @@ bash$ cat ~/bin/ngrep
 rg $1 --sort modified ~/.nsh_history/*${2}*
 ```
 
+4.a If you install the package `rg`, 
+you could use the provided function `ngrep` instead.
+The output buffer of this special `*rg*` search is called `*ngrep*` 
+
 ## Usage:
 
 Start a new named shell with: `M-x nsh` (`Esc-x nsh`; or bind to `<f9>`).
