@@ -13,10 +13,10 @@
 (require 'cl-lib)
 (require 'project)
 
-;; Customization helps select useful buffers for default split functionality.
+;; Customization helps setup default variables for nsh
 (defgroup nsh-customization
   '(
-    (nsh-bash-executable custom-variable) ;; location of bash executable
+    (nsh-bash-executable custom-variable)  ;; location of bash executable; sometimes it's not in /bin/
     (nsh-bash-history-dir custom-variable) ;; directory that contains all past shell histories
     (nsh-common-env custom-variable)
     (nsh-mode-unload-hook custom-variable)
@@ -24,7 +24,7 @@
     )
   "Customization group for nsh."
   :group 'convenience
-  :prefix "split-frame")
+  :prefix "nsh")
 
 (defcustom nsh-mode-unload-hook nil
   "A hook that gets run when `nsh-mode' is unloaded."
@@ -68,6 +68,9 @@
 ;; and then also sets a different HISTFILE.
 ;; If you need any additional overrides to the default bash,
 ;; you can add them to this list.
+;; If you want persistent history times, you probably need to set
+;; the variable HISTTIMEFORMAT below in your ~/.bashrc, for example:
+;; echo 'export HISTTIMEFORMAT="%F %T "' >> ~/.bashrc
 (defcustom nsh-bash-common-env
   '(("HISTSIZE" . "50000")              ; recall up to 50K commands per shell
     ("HISTFILESIZE" . "1000000")        ; save all history
@@ -110,6 +113,17 @@
     (let ((buf (shell nsh-buffer)))
       (unless (derived-mode-p 'nsh-mode) (nsh-mode))
       buf)))
+
+;; Run the ngrep script equivalent within emacs
+;; and get the results in the default *rg* buffer.
+;;;###autoload
+(defun ngrep (pattern)
+  "Run rg in the histories of nsh possibly subset by PATTERN."
+  (interactive "sNsh Search Pattern: ")
+  (require 'rg)
+  (let ((ngrep-dir nsh-bash-history-dir)
+	(rg-buffer-name (get-buffer-create "ngrep")))
+    (rg pattern "everything" ngrep-dir)))
 
 ;; Because project.el has become rather useful over the last decade,
 ;; I provide here an implementation of nsh-in-project, which starts
