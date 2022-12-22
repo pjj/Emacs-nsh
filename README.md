@@ -10,7 +10,8 @@ to automagically store and sync them). Bookmark your nsh and restore it
 at the correct directory. Drop an nsh at your project's root. I've
 used nsh for years, and it has saved me tons of time (it only gets
 better over time).  With a simple rg in your nsh_history directory you
-can find commands you issued years ago.
+can find commands you issued years ago. Together with burly-open-bookmarks
+you can restore your shell window configurations.
 
 ## Installation instructions:
 
@@ -56,6 +57,11 @@ The `ngrep` function puts the output in a buffer called
 I often use this function to quickly jump to the relevant secction 
 of the history of a particular shell.
 
+5. Bookmarks of shells work as expected.
+If you use `burly-bookmark-windows` your shell
+will reopen in the current working directory
+with its past history.
+
 
 ## Usage:
 
@@ -63,3 +69,18 @@ Start a new named shell with: `M-x nsh` (`Esc-x nsh`; or bind to `<f9>`).
 Enter the shell's name in the minibuffer.
 You can auto-complete the name using your favorite completion solution; 
 nsh will look up the names of all your existing histories).
+
+
+## Inspiration / credits
+
+The original inspiration came from Joe Bank's package nshell
+a package for using named shells with saved histories within Emacs.
+I can no longer live without keeping shell histories forever.
+
+
+## Limitations:
+
+nsh works with tramp as expected: the records are stored on the remote machine.
+However, it does not work as expected when the user issues ssh from a local nsh.
+
+

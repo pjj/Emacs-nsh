@@ -78,7 +78,7 @@
   '(("HISTSIZE" . "50000")              ; recall up to 50K commands per shell
     ("HISTFILESIZE" . "1000000")        ; save all history
     ("HISTCONTROL" . "ignoredups")      ; ignore repeated entries
-    ("HISTIGNORE" . "ls:ls -lrt:bg:fg") ; ignore ls, bg, fg
+    ("HISTIGNORE" . "ls:ls -lrt:bg:fg:history") ; ignore ls, bg, fg, history
     ("HISTTIMEFORMAT" . "%Y-%m-%d %T ") ; show history times
     ("PROMPT_COMMAND" . "history -a")   ; append history after each command.
     )
