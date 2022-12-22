@@ -5,6 +5,9 @@
 ;;;
 ;;; Commentary:
 ;;; This is a tool that I've used for over a decade.
+;;; 
+;;; The original inspiration came from Joe Bank's package nshell
+;;; a package for using named shells with saved histories within Emacs.
 ;;;
 
 ;;; Code:
