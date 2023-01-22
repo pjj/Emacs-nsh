@@ -40,11 +40,12 @@
   :group 'nsh-customization)
 
 (defcustom nsh-bash-executable
-  "/bin/bash"
-  "The location of bash for nsh to start."
+  nil
+  "The location of bash for nsh to start.
+\"/bin/bash\" or \"/opt/homebrew/bin/bash\" may be good options.
+If nil, it falls back to using the shell in `shell-file-name`."
   :group 'nsh-customization
-  :type '(string))
-
+  :type '(choice (const :tag "Default" nil) file))
 
 (defun expand-file-name-if-dir-accessible (fname)
   "Expand FNAME if it is the name of an accessible directory; otherwise nil."
