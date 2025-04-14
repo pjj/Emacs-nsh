@@ -1,4 +1,4 @@
-;;; nsh.el --- create a new shell in a named buffer
+;;; nsh.el --- create a new shell in a named buffer  -*- lexical-binding: t; -*-
 ;;; Keep separate histories for each bash shell in you nsh-bash-history-dir
 ;;;
 ;;; Questions: Paul.Maragakis@gmail.com
