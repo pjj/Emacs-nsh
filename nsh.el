@@ -151,7 +151,7 @@ If nil, it falls back to using the shell in `shell-file-name`."
 	(and (file-exists-p nsh-bash-history-dir)         ; exists, but not readable
 	     (set-file-modes nsh-bash-history-dir ?\700)) ; fix permissions (shells are personal)
 	(make-directory nsh-bash-history-dir))            ; it wasn't there, make it
-  ('error (message "From: %s --> %s"                  ; for the unknown error...
+  (error (message "From: %s --> %s"                  ; for the unknown error...
 		   load-file-name (error-message-string err))))
 
 ;; bookmark support:
